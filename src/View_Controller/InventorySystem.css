@@ -1,5 +1,5 @@
 #mainTitleLabel{ /* For the main screen, top title */
-    -fx-font-size: 16px;
+    -fx-font-size: 18px;
 }
 
 #gridPaneMain{ /* The main page, 2 column, single row main window */
@@ -41,11 +41,16 @@
 }
 #gridPaneSettings{
     -fx-border-style: solid;
+    -fx-border-width: .7px;
+    -fx-border-radius: 5px;
 }
 
 #title{
     -fx-padding: 4px;
-    -fx-font-style: bold;
     -fx-font-size: 16px;
-
+}
+#IDText{
+    -fx-border-style: dotted;
+    -fx-border-width: .7px;
+    -fx-padding: 4px;
 }

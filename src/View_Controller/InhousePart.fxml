@@ -1,18 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import java.net.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<AnchorPane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" prefWidth="800" prefHeight="410"
+            fx:controller="View_Controller.MainScreenController">
+    <!-- top title -->
+    <Label fx:id="mainTitleLabel" text="Inventory Management System" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="10"/>
+    <!-- Start of page, two panel gridPane for two-column layout -->
+    <GridPane fx:id="gridPaneMain" AnchorPane.leftAnchor="15" AnchorPane.topAnchor="50" >
+        <padding>
+            <Insets top="20" right="20" bottom="20" left="20"/>
+        </padding>
+        <!-- Start of left column -->
+        <GridPane GridPane.rowIndex="0" GridPane.columnIndex="0" id="gridPaneSettings"
+                  maxWidth="Infinity" maxHeight="Infinity" prefWidth="410" vgap="15"  hgap="-25">
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="35"/>
+            </padding>
 
-<?import java.net.URL?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="View_Controller.InhousePartController"
-            prefHeight="400.0" prefWidth="600.0">
+            <children>
+                <Label text="Add Part" id="title" GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.columnSpan="1" />
+                <RadioButton text="In-House" GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="100"/>
+                <RadioButton text="Outsourced" GridPane.rowIndex="0" GridPane.columnIndex="2" prefWidth="100" />
+                <Label text="ID" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <Label text="Auto Gen-Disabled" GridPane.rowIndex="1" GridPane.columnIndex="1" prefWidth="160" id="IDText" />
+                <Label text="Name" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextField text ="Part Name" GridPane.rowIndex="2" GridPane.columnIndex="1" prefWidth="160" />
+                <Label text="Inv" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <TextField text ="Inv" GridPane.rowIndex="3" GridPane.columnIndex="1" prefWidth="160" />
+                <Label text="Price/Cost" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <TextField text ="Price/Cost" GridPane.rowIndex="4" GridPane.columnIndex="1" prefWidth="160" />
+                <HBox GridPane.rowIndex="5" GridPane.columnIndex="0" prefWidth="400" GridPane.columnSpan="4" >
+                    <children>
+                        <Label text="Max"  prefWidth="45" GridPane.rowIndex="5" GridPane.columnIndex="0" />
+                        <TextField text ="Max"  prefWidth="100" />
+                        <Label text="     "/>
+                        <Label text="Min" prefWidth="45"/>
+                        <TextField text ="Min" prefWidth="100" />
+                    </children>
+                </HBox>
+                <Label GridPane.rowIndex="6" GridPane.columnIndex="0" prefWidth="110" text="Machine ID" />
+                <TextField GridPane.rowIndex="6" GridPane.columnIndex="1" prefWidth="160" text="Mach ID"/>
+            </children>
+            <columnConstraints>
+                <ColumnConstraints halignment="LEFT" prefWidth="140.0"/>
+                <ColumnConstraints halignment="LEFT" prefWidth="160.0"/>
+            </columnConstraints>
+        </GridPane>
+        <HBox prefHeight="40" GridPane.rowIndex="5" GridPane.columnSpan="4" >
+            <padding>
+                <Insets top="10" right="0" bottom="10" left="265"/>
+            </padding>
+            <Button GridPane.rowIndex="5" GridPane.columnIndex="1" text="Save" prefWidth="70"/>
+            <Button GridPane.rowIndex="5" GridPane.columnIndex="2" text="Cancel" prefWidth="70"/>
+
+        </HBox>
+    </GridPane>
+
 
     <stylesheets>
-        <URL value="@InventorySystem.css" />
+        <URL value="@InventorySystem.css"/>
     </stylesheets>
+
 </AnchorPane>
+
