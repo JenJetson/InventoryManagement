@@ -4,9 +4,48 @@
 
 #gridPaneMain{ /* The main page, 2 column, single row main window */
     -fx-font-size: 14px;
-    -fx-background-color: red;
+    -fx-background-color: lightgray;
    }
 #partsLabel{
+    -fx-font-size: 16px;
+}
+#mainGrid{
+    -fx-padding: 3px;
+    -fx-border-style: dotted none none dotted;
+    -fx-border-width: .5px;
+
+}
+#mainGridWhite{
+    -fx-padding: 3px;
+    -fx-background-color:  white;
+    -fx-border-style: dotted none none dotted;
+    -fx-border-width: .5px;
+
+}
+#mainGridHeader{
+    -fx-border-style: solid solid solid solid;
+    -fx-border-width: 1px .5px 1px .5px;
+    -fx-padding: 3px;
+}
+#mainGridWhiteBottom{
+    -fx-border-style: dotted none solid dotted;
+    -fx-padding: 3px;
+    -fx-background-color: white;
+    -fx-border-width: .5px;
+}
+#mainGridWhiteBottomRight{
+    -fx-border-style: dotted none solid dotted;
+    -fx-border-width: .5px;
+    -fx-padding: 3px;
+    -fx-background-color: white;
+}
+#gridPaneSettings{
+    -fx-border-style: solid;
+}
+
+#title{
+    -fx-padding: 4px;
+    -fx-font-style: bold;
     -fx-font-size: 16px;
 
 }

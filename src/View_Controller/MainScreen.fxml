@@ -3,64 +3,133 @@
 <?import java.net.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<AnchorPane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" prefWidth="890"
+            fx:controller="View_Controller.MainScreenController">
 
-<AnchorPane prefHeight="500.0" prefWidth="900" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View_Controller.MainScreenController">
+    <Label fx:id="mainTitleLabel" text="Inventory Management System" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="20"/>
 
-<Label fx:id="mainTitleLabel" text="Inventory Management System" AnchorPane.leftAnchor="40.0" />
+    <GridPane fx:id="gridPaneMain" AnchorPane.leftAnchor="20" AnchorPane.topAnchor="50" hgap="10">
+        <padding>
+            <Insets top="20" right="20" bottom="20" left="20"/>
+        </padding>
+        <GridPane GridPane.rowIndex="0" GridPane.columnIndex="0" id="gridPaneSettings"
+                  maxWidth="Infinity" maxHeight="Infinity">
+            <!--begin data grid -->
+            <children>
+                <HBox prefHeight="40" GridPane.rowIndex="0" GridPane.columnSpan="4" >
+                    <padding>
+                        <Insets top="10" right="5" bottom="10" left="5"/>
+                    </padding>
+                    <Label GridPane.rowIndex="0" GridPane.columnIndex="0" text="Parts" fx:id="partsLabel"
+                           id="title" prefWidth="70"></Label>
+                    <Label text="          "/>
+                    <Button GridPane.rowIndex="0" GridPane.columnIndex="2" text="Search" prefWidth="80" ></Button>
+                    <Label GridPane.rowIndex="0" GridPane.columnIndex="1" text="  "></Label>
+                    <TextField GridPane.rowIndex="0" GridPane.columnIndex="3" prefWidth="175" fx:id="title"
+                               id="title"></TextField>
+                </HBox>
+                <Label GridPane.rowIndex="1" GridPane.columnIndex="0" text="Part ID" id="mainGridHeader"
+                       prefWidth="80"/>
+                <Label GridPane.rowIndex="1" GridPane.columnIndex="1" text="Part Name" id="mainGridHeader"
+                       prefWidth="80"/>
+                <Label GridPane.rowIndex="1" GridPane.columnIndex="2" text="Inventory Level" id="mainGridHeader"
+                       prefWidth="110"/>
+                <Label GridPane.rowIndex="1" GridPane.columnIndex="3" text="Price/Cost per Unit" id="mainGridHeader"
+                       prefWidth="130"/>
+                <Label GridPane.rowIndex="2" GridPane.columnIndex="0" text="empty" id="mainGridWhite" prefWidth="80"/>
+                <Label GridPane.rowIndex="2" GridPane.columnIndex="1" text="empty" id="mainGridWhite" prefWidth="80"/>
+                <Label GridPane.rowIndex="2" GridPane.columnIndex="2" text="empty" id="mainGridWhite" prefWidth="110"/>
+                <Label GridPane.rowIndex="2" GridPane.columnIndex="3" text="empty" id="mainGridWhite" prefWidth="130"/>
+                <Label GridPane.rowIndex="3" GridPane.columnIndex="0" text="empty" id="mainGrid" prefWidth="80"/>
+                <Label GridPane.rowIndex="3" GridPane.columnIndex="1" text="empty" id="mainGrid" prefWidth="80"/>
+                <Label GridPane.rowIndex="3" GridPane.columnIndex="2" text="empty" id="mainGrid" prefWidth="110"/>
+                <Label GridPane.rowIndex="3" GridPane.columnIndex="3" text="empty" id="mainGrid" prefWidth="130"/>
+                <Label GridPane.rowIndex="4" GridPane.columnIndex="0" text="empty" id="mainGridWhiteBottom"
+                       prefWidth="80"/>
+                <Label GridPane.rowIndex="4" GridPane.columnIndex="1" text="empty" id="mainGridWhiteBottom"
+                       prefWidth="80"/>
+                <Label GridPane.rowIndex="4" GridPane.columnIndex="2" text="empty" id="mainGridWhiteBottom"
+                       prefWidth="110"/>
+                <Label GridPane.rowIndex="4" GridPane.columnIndex="3" text="empty" id="mainGridWhiteBottomRight"
+                       prefWidth="130"/>
+                <HBox prefHeight="40" GridPane.rowIndex="5" GridPane.columnSpan="4" >
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="165"/>
+                    </padding>
+                    <Button GridPane.rowIndex="5" GridPane.columnIndex="1" text="Add" prefWidth="70"/>
+                    <Button GridPane.rowIndex="5" GridPane.columnIndex="2" text="Modify" prefWidth="70"/>
+                    <Button GridPane.rowIndex="5" GridPane.columnIndex="3" text="Delete" prefWidth="70"/>
+                </HBox>
+            </children>
+            <columnConstraints>
+                <ColumnConstraints halignment="LEFT" prefWidth="80"/>
+                <ColumnConstraints halignment="LEFT" prefWidth="80.0"/>
+                <ColumnConstraints halignment="LEFT" prefWidth="110.0"/>
+                <ColumnConstraints halignment="LEFT" prefWidth="130.0"/>
+            </columnConstraints>
+        </GridPane>
 
-<GridPane fx:id="gridPaneMain" prefHeight="400" prefWidth="900" AnchorPane.leftAnchor="20" AnchorPane.topAnchor="40" gridLinesVisible="true">
-    <GridPane GridPane.rowIndex="0" GridPane.columnIndex="0" gridLinesVisible="true" vgap="5">
-        <Label GridPane.rowIndex="0" GridPane.columnIndex="0" text="Parts" fx:id="partsLabel" ></Label>
-        <Button GridPane.rowIndex="0" GridPane.columnIndex="2" text="Search" ></Button>
-        <TextField GridPane.rowIndex="0" GridPane.columnIndex="3" prefWidth="155" GridPane.columnSpan="2"></TextField>
-        <Label GridPane.rowIndex="1" GridPane.columnIndex="0" text="Part ID"  prefWidth="80"></Label>
-        <Label GridPane.rowIndex="1" GridPane.columnIndex="1" text="Part Name"  prefWidth="100"></Label>
-        <Label GridPane.rowIndex="1" GridPane.columnIndex="2" text="Inventory Level"  prefWidth="100"></Label>
-        <Label GridPane.rowIndex="1" GridPane.columnIndex="3" text="Price/Cost per Unit"  prefWidth="120"></Label>
-        <Label GridPane.rowIndex="2" GridPane.columnIndex="0" text="empty" />
-        <Label GridPane.rowIndex="2" GridPane.columnIndex="1" text="empty" />
-        <Label GridPane.rowIndex="2" GridPane.columnIndex="2" text="empty" />
-        <Label GridPane.rowIndex="2" GridPane.columnIndex="3" text="empty"/>
-        <Label GridPane.rowIndex="3" GridPane.columnIndex="0" text="empty" />
-        <Label GridPane.rowIndex="3" GridPane.columnIndex="1" text="empty" />
-        <Label GridPane.rowIndex="3" GridPane.columnIndex="2" text="empty" />
-        <Label GridPane.rowIndex="3" GridPane.columnIndex="3" text="empty"/>
-        <Label GridPane.rowIndex="4" GridPane.columnIndex="0" text="empty" />
-        <Label GridPane.rowIndex="4" GridPane.columnIndex="1" text="empty" />
-        <Label GridPane.rowIndex="4" GridPane.columnIndex="2" text="empty" />
-        <Label GridPane.rowIndex="4" GridPane.columnIndex="3" text="empty"/>
-        <Button GridPane.rowIndex="5" GridPane.columnIndex="1" text="Add"/>
-        <Button GridPane.rowIndex="5" GridPane.columnIndex="2" text="Modify" />
-        <Button GridPane.rowIndex="5" GridPane.columnIndex="3" text="Delete"/>
+    <GridPane GridPane.rowIndex="0" GridPane.columnIndex="1" id="gridPaneSettings"
+              maxWidth="Infinity" maxHeight="Infinity">
+        <!--begin data grid -->
+        <children>
+            <HBox prefHeight="40" GridPane.rowIndex="0" GridPane.columnSpan="4" >
+                <padding>
+                    <Insets top="10" right="5" bottom="10" left="5"/>
+                </padding>
+                <Label GridPane.rowIndex="0" GridPane.columnIndex="0" text="Products" id="title" prefWidth="70"></Label>
+                <Label text="                "/>
+                <Button GridPane.rowIndex="0" GridPane.columnIndex="2" text="Search" prefWidth="80" ></Button>
+                <Label GridPane.rowIndex="0" GridPane.columnIndex="1" text="  "></Label>
+                <TextField GridPane.rowIndex="0" GridPane.columnIndex="3" prefWidth="175" id="title"></TextField>
+            </HBox>
+            <Label GridPane.rowIndex="1" GridPane.columnIndex="0" text="Product ID" id="mainGridHeader"
+                   prefWidth="80"/>
+            <Label GridPane.rowIndex="1" GridPane.columnIndex="1" text="Product Name" id="mainGridHeader"
+                   prefWidth="100"/>
+            <Label GridPane.rowIndex="1" GridPane.columnIndex="2" text="Inventory Level" id="mainGridHeader"
+                   prefWidth="110"/>
+            <Label GridPane.rowIndex="1" GridPane.columnIndex="3" text="Price per Unit" id="mainGridHeader"
+                   prefWidth="130"/>
+            <Label GridPane.rowIndex="2" GridPane.columnIndex="0" text="00" id="mainGridWhite" prefWidth="80"/>
+            <Label GridPane.rowIndex="2" GridPane.columnIndex="1" text="empty" id="mainGridWhite" prefWidth="100"/>
+            <Label GridPane.rowIndex="2" GridPane.columnIndex="2" text="empty" id="mainGridWhite" prefWidth="110"/>
+            <Label GridPane.rowIndex="2" GridPane.columnIndex="3" text="empty" id="mainGridWhite" prefWidth="130"/>
+            <Label GridPane.rowIndex="3" GridPane.columnIndex="0" text="empty" id="mainGrid" prefWidth="80"/>
+            <Label GridPane.rowIndex="3" GridPane.columnIndex="1" text="empty" id="mainGrid" prefWidth="100"/>
+            <Label GridPane.rowIndex="3" GridPane.columnIndex="2" text="empty" id="mainGrid" prefWidth="110"/>
+            <Label GridPane.rowIndex="3" GridPane.columnIndex="3" text="empty" id="mainGrid" prefWidth="130"/>
+            <Label GridPane.rowIndex="4" GridPane.columnIndex="0" text="empty" id="mainGridWhiteBottom"
+                   prefWidth="80"/>
+            <Label GridPane.rowIndex="4" GridPane.columnIndex="1" text="empty" id="mainGridWhiteBottom"
+                   prefWidth="100"/>
+            <Label GridPane.rowIndex="4" GridPane.columnIndex="2" text="empty" id="mainGridWhiteBottom"
+                   prefWidth="110"/>
+            <Label GridPane.rowIndex="4" GridPane.columnIndex="3" text="empty" id="mainGridWhiteBottomRight"
+                   prefWidth="130"/>
+            <HBox prefHeight="40" GridPane.rowIndex="5" GridPane.columnSpan="4" >
+                <padding>
+                    <Insets top="10" right="0" bottom="10" left="185"/>
+                </padding>
+                <Button GridPane.rowIndex="5" GridPane.columnIndex="1" text="Add" prefWidth="70"/>
+                <Button GridPane.rowIndex="5" GridPane.columnIndex="2" text="Modify" prefWidth="70"/>
+                <Button GridPane.rowIndex="5" GridPane.columnIndex="3" text="Delete" prefWidth="70"/>
+            </HBox>
+        </children>
+        <columnConstraints>
+            <ColumnConstraints halignment="RIGHT" prefWidth="80"/>
+            <ColumnConstraints halignment="RIGHT" prefWidth="100.0"/>
+            <ColumnConstraints halignment="RIGHT" prefWidth="110.0"/>
+            <ColumnConstraints halignment="RIGHT" prefWidth="130.0"/>
+        </columnConstraints>
     </GridPane>
-    <GridPane GridPane.rowIndex="0" GridPane.columnIndex="1" gridLinesVisible="true" >
-        <Label GridPane.rowIndex="0" GridPane.columnIndex="0" text="Products" GridPane.columnSpan="2" fx:id="productLabel"></Label>
-        <Button GridPane.rowIndex="0" GridPane.columnIndex="2" text="Search" ></Button>
-        <TextField GridPane.rowIndex="0" GridPane.columnIndex="3" prefWidth="155" GridPane.columnSpan="2"></TextField>
-        <Label GridPane.rowIndex="1" GridPane.columnIndex="0" text="Product ID" prefWidth="80"></Label>
-        <Label GridPane.rowIndex="1" GridPane.columnIndex="1" text="Product Name" prefWidth="100"></Label>
-        <Label GridPane.rowIndex="1" GridPane.columnIndex="2" text="Inventory Level" prefWidth="100"></Label>
-        <Label GridPane.rowIndex="1" GridPane.columnIndex="3" text="Price per Unit" prefWidth="100"></Label>
-        <Label GridPane.rowIndex="2" GridPane.columnIndex="0" text="empty" />
-        <Label GridPane.rowIndex="2" GridPane.columnIndex="1" text="empty" />
-        <Label GridPane.rowIndex="2" GridPane.columnIndex="2" text="empty" />
-        <Label GridPane.rowIndex="2" GridPane.columnIndex="3" text="empty"/>
-        <Label GridPane.rowIndex="3" GridPane.columnIndex="0" text="empty" />
-        <Label GridPane.rowIndex="3" GridPane.columnIndex="1" text="empty" />
-        <Label GridPane.rowIndex="3" GridPane.columnIndex="2" text="empty" />
-        <Label GridPane.rowIndex="3" GridPane.columnIndex="3" text="empty"/>
-        <Label GridPane.rowIndex="4" GridPane.columnIndex="0" text="empty" />
-        <Label GridPane.rowIndex="4" GridPane.columnIndex="1" text="empty" />
-        <Label GridPane.rowIndex="4" GridPane.columnIndex="2" text="empty" />
-        <Label GridPane.rowIndex="4" GridPane.columnIndex="3" text="empty"/>
-        <Button GridPane.rowIndex="5" GridPane.columnIndex="1" text="Add"/>
-        <Button GridPane.rowIndex="5" GridPane.columnIndex="2" text="Modify" />
-        <Button GridPane.rowIndex="5" GridPane.columnIndex="3" text="Delete"/>
     </GridPane>
-</GridPane>
 
+    <Button GridPane.rowIndex="6" GridPane.columnIndex="2" text="Exit" id="btnExit" AnchorPane.bottomAnchor="20"
+            AnchorPane.rightAnchor="40" prefWidth="70"/>
     <stylesheets>
-        <URL value="@InventorySystem.css" />
+        <URL value="@InventorySystem.css"/>
     </stylesheets>
 
 </AnchorPane>
