@@ -6,7 +6,7 @@
 <?import javafx.geometry.Insets?>
 <AnchorPane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" prefWidth="800"
             prefHeight="530"
-            fx:controller="View_Controller.AddProductController">
+            fx:controller="View_Controller.ModifyProductController">
     <!-- top title -->
     <Label fx:id="mainTitleLabel" text="Inventory Management System" AnchorPane.leftAnchor="40.0"
            AnchorPane.topAnchor="20"/>
@@ -23,7 +23,7 @@
             <Label text="Modify Product" id="title" GridPane.rowIndex="0" GridPane.columnIndex="0"
                    GridPane.columnSpan="2"/>
             <Label text="ID" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-            <Label text="Auto Gen-Disabled" GridPane.rowIndex="1" GridPane.columnIndex="1" prefWidth="160" id="productId"/>
+            <Label text="Auto Generated" GridPane.rowIndex="1" GridPane.columnIndex="1" prefWidth="160" id="productId" fx:id="productID"/>
             <Label text="Name" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
             <TextField text="Product Name" GridPane.rowIndex="2" GridPane.columnIndex="1" prefWidth="160"
                        fx:id="productName"/>
@@ -61,8 +61,8 @@
         </padding>
         <Button text="Add" prefWidth="70" fx:id="btnAdd" onAction="#clickBtnAdd"/>
     </HBox>
-    <TableView fx:id="tableSearchProducts" prefHeight="150" prefWidth="400" AnchorPane.rightAnchor="30.0"
-               AnchorPane.topAnchor="240.0">
+    <TableView fx:id="searchPartsTable" prefHeight="150" prefWidth="400" AnchorPane.rightAnchor="30.0"
+               AnchorPane.topAnchor="50.0">
         <columns>
             <TableColumn fx:id="addPartId" prefWidth="70" text="Part ID"/>
             <TableColumn fx:id="addPartName" prefWidth="90" text="Part Name"/>
@@ -71,7 +71,7 @@
         </columns>
     </TableView>
     <TableView fx:id="associatedPartsTable" prefHeight="150" prefWidth="400" AnchorPane.rightAnchor="30.0"
-               AnchorPane.topAnchor="50.0">
+               AnchorPane.topAnchor="240.0">
         <columns>
             <TableColumn fx:id="associatedId" prefWidth="60" text="Part ID"/>
             <TableColumn fx:id="associatedName" prefWidth="100" text="Part Name"/>

@@ -55,6 +55,11 @@ public class MainScreenController implements Initializable {
     private Button btnPartModify;
     @FXML
     private Button btnPartAdd;
+    @FXML
+    private Button btnProductAdd;
+    @FXML
+    private Button btnProductModify;
+
 
     private Part modifyPart;
     private int modifyPartIndex;
@@ -94,27 +99,6 @@ public class MainScreenController implements Initializable {
     }
 
 
-    @FXML
-    void clickPartModify(ActionEvent e) throws IOException {
-        //Window switch
-        Stage stage;
-        Parent root;
-        stage = (Stage) btnPartModify.getScene().getWindow();
-        //load up OTHER FXML document
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(
-                "ModifyPart.fxml"));
-
-        root = loader.load();
-        ModifyPartController controller = loader.getController();
-        Part part = tableParts.getSelectionModel().getSelectedItem();
-        int index = tableParts.getSelectionModel().getSelectedIndex();
-
-        if (part != null) {
-            controller.setPart(part, index);
-        }
-        Scene scene = new Scene(root, 482,480);
-        Main.mainStage.setScene(scene);
-    }
 
     @FXML
     public void clickPartAdd(ActionEvent e) throws IOException {
@@ -129,29 +113,60 @@ public class MainScreenController implements Initializable {
         stageAdd.setScene(new Scene(root, 482, 480));
         stageAdd.show();
     }
-
     @FXML
-    public void clickProductModify(ActionEvent e) throws IOException {
+    public void clickProductAdd(ActionEvent e) throws IOException {
         Stage stageModify;
         Parent root;
-        stageModify = (Stage) btnPartModify.getScene().getWindow();
+        stageModify = (Stage) btnProductAdd.getScene().getWindow();
+        //load up OTHER FXML document
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                "AddProduct.fxml"));
+        root = loader.load();
+        stageModify.setTitle("Add Product");
+        stageModify.setScene(new Scene(root, 802, 480));
+        stageModify.show();
+    }
+    @FXML
+    void clickPartModify(ActionEvent e) throws IOException {
+        //Window switch
+        Stage stage;
+        Parent root;
+        stage = (Stage) btnPartModify.getScene().getWindow();
         //load up OTHER FXML document
         FXMLLoader loader = new FXMLLoader(getClass().getResource(
                 "ModifyPart.fxml"));
+        stage.setTitle("Modify Part");
         root = loader.load();
-        stageModify.setTitle("Modify Part");
-        stageModify.setScene(new Scene(root, 482, 480));
-        stageModify.show();
+        ModifyPartController controller = loader.getController();
+        Part modifyPart = tableParts.getSelectionModel().getSelectedItem();
+        int index = tableParts.getSelectionModel().getSelectedIndex();
+
+        if (modifyPart != null) {
+            controller.setPart(modifyPart, index);
+        }
+        Scene scene = new Scene(root, 482,480);
+        Main.mainStage.setScene(scene);
     }
 
-
     @FXML
-    public void clickProductAdd(ActionEvent e) throws IOException {
-        Stage primaryStage = new Stage();
-        Parent window = FXMLLoader.load(getClass().getResource("AddProduct.fxml"));
-        primaryStage.setTitle("Add Product");
-        primaryStage.setScene(new Scene(window, 802, 480));
-        primaryStage.show();
+    public void clickProductModify(ActionEvent e) throws IOException {
+        Stage stage;
+        Parent root;
+        stage = (Stage) btnProductModify.getScene().getWindow();
+        //load up OTHER FXML document
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                "ModifyProduct.fxml"));
+        stage.setTitle("Modify Product");
+        root = loader.load();
+        ModifyProductController controller = loader.getController();
+        Product modifyProduct = tableProducts.getSelectionModel().getSelectedItem();
+        int index = tableProducts.getSelectionModel().getSelectedIndex();
+
+        if (modifyProduct != null) {
+            controller.setProduct(modifyProduct, index);
+        }
+        Scene scene = new Scene(root, 802,480);
+        Main.mainStage.setScene(scene);
     }
 
     @FXML
@@ -180,7 +195,6 @@ public class MainScreenController implements Initializable {
             singlePart.forEach(allParts::remove);  //removes the selected part
         }
     }
-
     @FXML
         //this closes the program
     void exitApp(ActionEvent event) {
@@ -232,4 +246,16 @@ public class MainScreenController implements Initializable {
         tableProducts.setItems(productMatches); //update window (tableParts) with matches
         productSearchField.clear();  //clean the text field
     }
+
+    @FXML
+    public void goToMainStage() throws IOException {
+        Main main = new Main();
+        Stage primaryStage = main.getPrimaryStage();
+
+        Parent window = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
+        primaryStage.setTitle("Inventory Management System");
+        primaryStage.setScene(new Scene(window, 860, 485));
+        primaryStage.show();
+    }
+
 }

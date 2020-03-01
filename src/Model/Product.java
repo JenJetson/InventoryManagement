@@ -23,6 +23,7 @@ public class Product {
         this.stock = stock;
         this.min = min;
         this.max = max;
+
     }
 
     public void addAssociatedPart(Part part){

@@ -54,7 +54,7 @@
         <Label text="  " fx:id="btnSearchField"></Label>
         <TextField prefWidth="175" id="title"></TextField>
     </HBox>
-    <TableView fx:id="tableParts" prefHeight="150" prefWidth="400" AnchorPane.rightAnchor="30.0"
+    <TableView fx:id="tableProducts" prefHeight="150" prefWidth="400" AnchorPane.rightAnchor="30.0"
                AnchorPane.topAnchor="50.0">
         <columns>
             <TableColumn fx:id="partIdColumn" prefWidth="60" text="id"/>
@@ -71,7 +71,7 @@
     </HBox>
 
 
-    <TableView fx:id="tableProducts" prefHeight="150" prefWidth="400" AnchorPane.rightAnchor="30.0"
+    <TableView fx:id="tableParts" prefHeight="150" prefWidth="400" AnchorPane.rightAnchor="30.0"
                AnchorPane.topAnchor="240.0">
         <columns>
             <TableColumn fx:id="productIdColumn" prefWidth="70" text="id"/>
@@ -84,11 +84,11 @@
         <padding>
             <Insets top="10" right="0" bottom="2" left="315" />
         </padding>
-        <Button text="Delete" prefWidth="70" fx:id="btnDelete"></Button>
+        <Button text="Delete" prefWidth="70" fx:id="btnDelete" onAction="#clickBtnDelete"></Button>
     </HBox>
     <HBox prefHeight="10" AnchorPane.rightAnchor="34" AnchorPane.topAnchor="422">
-        <Button text="Save" prefWidth="70" fx:id="btnSave"/>
-        <Button text="Cancel" prefWidth="70" fx:id="btnCancel">  <HBox.margin>
+        <Button text="Save" prefWidth="70" fx:id="btnSave" onAction="#clickBtnSave"/>
+        <Button text="Cancel" prefWidth="70" fx:id="btnCancel" onAction="#clickBtnCancel">  <HBox.margin>
         <Insets left="2.0" />
         </HBox.margin></Button>
     </HBox>

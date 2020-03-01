@@ -99,7 +99,6 @@ public class ModifyPartController {
 
         if (part instanceof InhousePart) {
             InhousePart modifyPart = (InhousePart) part;
-            System.out.println("inhouse part initiated"); //fixme test data
             this.radioInHouse.setSelected(true);
             modifyPartMachineId.setText("Machine ID");
             this.modifyPartIdField.setText(Integer.toString(part.getId()));
@@ -150,15 +149,15 @@ public class ModifyPartController {
         int max = Integer.valueOf(modifyPartMaxField.getText());
        // partsList.remove(id-1); //the id is one off the index
         ///write it where it creates a new one with the same ID and removes the old one.
-        if (radioInHouse.isSelected() == true){
+        if (radioInHouse.isSelected()){
             int machId = Integer.valueOf(modifyPartMachineIdField.getText());
             InhousePart modifyIn = new InhousePart(id,name,price, inv, min, max, machId);
-            Inventory.getAllParts().set(index, modifyIn);
-        } else if (radioOutsourced.isSelected() == true) {
+            Inventory.getAllParts().set(index, modifyIn);  //this replaces the object at index with new item
+        } else if (radioOutsourced.isSelected()) {
             System.out.println("fired test outsourced");
             String company = modifyPartMachineIdField.getText();
             OutsourcedPart modifyOut = new OutsourcedPart(id,name,price, inv, min, max, company);
-            Inventory.getAllParts().set(index, modifyOut);
+            Inventory.getAllParts().set(index, modifyOut); //this replaces the object at index with new item
         }
         goToMainStage();
     }

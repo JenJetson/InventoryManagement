@@ -21,14 +21,14 @@ public class Inventory {
     public static Part lookupPart(int partId){
         return lookupPart(partId);
     }
-    public static Product lookupProduct(int productId){
+    public static Product lookupProduct(int productId){  //required for final
         return lookupProduct(productId);
     }
     public static int getIndex(){
         return index;
     }
 
-    public ArrayList lookupPart(String partName){
+    public static ArrayList lookupPart(String partName){
         ArrayList <Part> matchedParts = new ArrayList<>(); //create an array to hold the matches
         for (Part part : partsList){  //use enhanced for loop to save matches
             if (part.getName() == partName){
@@ -37,8 +37,8 @@ public class Inventory {
         }
         return matchedParts;
     }
-    public ArrayList lookupProduct(String productName){
-        ArrayList <Product> matchedProducts = new ArrayList<>();
+    public static ObservableList lookupProduct(String productName){
+       ObservableList <Product> matchedProducts = FXCollections.observableArrayList();
             for (Product product : productsList){
                 if (product.getName() == productName){
                     matchedProducts.add(product);
@@ -46,6 +46,8 @@ public class Inventory {
             }
         return matchedProducts;
     }
+
+
     public static ObservableList<Part> getAllParts(){
         return partsList;
     }
