@@ -1,5 +1,7 @@
 package Model;
 
+import static Model.Inventory.partsList;
+
 public class OutsourcedPart extends Part {
 
     private String companyName;
@@ -16,4 +18,10 @@ public class OutsourcedPart extends Part {
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
     }
+
+    public static void updatePart(int index, Part newPart, String companyName) {
+        Inventory.updatePart(index, newPart);
+    }
+
+
 }

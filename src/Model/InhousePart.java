@@ -27,4 +27,15 @@ public class InhousePart extends Part {
         productsList.add(product);
     }
 
+    public static void updatePart(int index, Part updatePart, int machineId){
+        for (Part part : partsList){
+            if (part.getId()==index){
+                part = updatePart;
+            }
+        }
+
+    }
+
+
+
 }

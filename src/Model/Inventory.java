@@ -61,7 +61,7 @@ public class Inventory {
             }
         }
     }
-    public void updatePart(int index, Part selectedPart){
+    public static void updatePart(int index, Part selectedPart){
         for (Part part : partsList ){
             if (part.getId() == index){
                 part = selectedPart;

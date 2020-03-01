@@ -1,5 +1,6 @@
 package View_Controller;
 
+import Kari_Cathey.Main;
 import Model.InhousePart;
 import Model.Inventory;
 import Model.OutsourcedPart;
@@ -77,24 +78,25 @@ public class AddPartController {
 
     @FXML
     public void goToMainStage() throws IOException {
-        Stage primaryStage = new Stage();
+        Main main = new Main();
+        Stage primaryStage = main.getPrimaryStage();
+
         Parent window = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
         primaryStage.setTitle("Inventory Management System");
-        primaryStage.setScene(new Scene(window, 860, 500));
+        primaryStage.setScene(new Scene(window, 800, 485));
         primaryStage.show();
     }
 
-
     @FXML
-    public void clickCancel(ActionEvent e) throws IOException {
+    public void clickCancel() throws IOException {
         goToMainStage();
     }
 
     @FXML
-    public void clickSave(ActionEvent e) throws IOException {
+    public void clickSave() throws IOException {
         //Assign variables so it's more legible
         Double price = Double.valueOf(addPartPrice.getText());
-        int id = Inventory.getIndex();
+        int id = Inventory.getIndex();  //method that generates the next id number
         String name = addPartName.getText();
         int inv = Integer.valueOf(addPartInv.getText());
         int min = Integer.valueOf(addPartMin.getText());

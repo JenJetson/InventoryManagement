@@ -10,10 +10,15 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 
+
 public class Main extends Application {
+
+public static Stage mainStage;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        setPrimaryStage(primaryStage);
+        mainStage = primaryStage;
 
         //Add sample data for evaluation.
         Part part1 = new InhousePart(1,"Screws",.55,99,10,5000,73);
@@ -30,6 +35,8 @@ public class Main extends Application {
         Inventory.addPart(part2);
         Inventory.addPart(part3);
 
+
+
         //initialize the opening mainScreen
         Parent root = FXMLLoader.load(getClass().getResource("/View_Controller/MainScreen.fxml"));
         Scene scene = new Scene(root);
@@ -38,7 +45,16 @@ public class Main extends Application {
         primaryStage.show();
   }
 
+    private void setPrimaryStage(Stage mainStage){
+        Main.mainStage = mainStage;
+    }
+
     public static void main(String[] args) {
         launch(args);
     }
+
+   public static Stage getPrimaryStage(){
+        return mainStage;
+   }
+
 }
