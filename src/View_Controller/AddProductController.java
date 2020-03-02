@@ -18,6 +18,11 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class AddProductController implements Initializable {
+
+    Part selectedPart;
+    Product newProduct;
+    int index = Inventory.productsList.size() + 1;
+
     @FXML
     Button btnCancel;
     @FXML
@@ -65,9 +70,6 @@ public class AddProductController implements Initializable {
 
     ObservableList<Part> associatedPartsList;
 
-    Part selectedPart;
-    Product newProduct;
-    int index = Inventory.productsList.size() + 1;
 
     public AddProductController() {
     }
@@ -81,18 +83,34 @@ public class AddProductController implements Initializable {
         partInvColumn.setCellValueFactory(new PropertyValueFactory<>("stock"));
         partPriceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
         //new item so no associated parts to fill into screen
-        tableAssociatedParts.setItems(associatedPartsList);
+        getAssociatedPartsTable();
+        associatedIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        associatedNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        associatedInvColumn.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        associatedPriceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+
     }
 
 
     @FXML
     public void clickBtnAdd() {
-        //selectedPart = tableParts.getSelectionModel().getSelectedItem();
-        newProduct.addAssociatedPart(selectedPart);
+        selectedPart = (Part) tableParts.getSelectionModel().getSelectedItem();   //fixme not sure why not working
+        newProduct.addAssociatedPart(selectedPart);        //is it because you don't have proper controller?
+    }
+
+    public void getPartsTable() {  //get all parts
+        tableParts.setItems(Inventory.getAllParts());  //gets all parts
     }
 
     public void getAssociatedPartsTable() {
-        tableAssociatedParts.setItems(newProduct.getAllAssociatedParts());
+        if (tableAssociatedParts.getItems() == null){
+            System.out.println("tableAssociateParts is empty");
+            //tableAssociatedParts.setItems(associatedPartsList);
+        } else {
+            System.out.println("tableAssociated parts is not empty : " + tableAssociatedParts);
+        //tableAssociatedParts.setItems(newProduct.getAllAssociatedParts());
+        }
     }
 
     @FXML //for when you push enter when nothing there so it refreshes
@@ -102,10 +120,6 @@ public class AddProductController implements Initializable {
         } else
             clickBtnSearch(event);  //call the search method
         searchField.clear();  //clean the text field
-    }
-
-    public void getPartsTable() {  //get all parts
-        tableParts.setItems(Inventory.getAllParts());  //gets all parts
     }
 
     @FXML
