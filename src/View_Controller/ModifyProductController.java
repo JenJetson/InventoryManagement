@@ -151,8 +151,8 @@ public class ModifyProductController {
         int max = Integer.valueOf(productMax.getText());  //saves the max field
 
         Product updatedProduct = new Product(id,name,price,inv, min, max);
-        parts = associatedPartsTable.getSelectionModel().getSelectedItems();
-        for (Part part : parts) {
+        parts = associatedPartsTable.getItems(); //this gets the entire table vs. selected items (like other usage here)
+        for (Part part : parts) { //go through list of parts on table and add to AssociatedParts list
             updatedProduct.addAssociatedPart(part);
         }
 
