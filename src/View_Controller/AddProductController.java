@@ -23,7 +23,7 @@ public class AddProductController implements Initializable {
     Part selectedPart;
     Product newProduct;
     int index = Inventory.productsList.size();
-    int id = Inventory.productsList.size() + 1;
+    int id = Inventory.getProductId();
 
     @FXML
     Button btnCancel;
@@ -74,6 +74,7 @@ public class AddProductController implements Initializable {
 
 
     public AddProductController() {
+
     }
 
     @Override
@@ -96,7 +97,7 @@ public class AddProductController implements Initializable {
         associatedInvColumn.setCellValueFactory(new PropertyValueFactory<>("stock"));
         associatedPriceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
 
-
+        id++;
     }
 
     public void getAssociatedPartsTable() {
@@ -154,7 +155,6 @@ public class AddProductController implements Initializable {
         for (Part part : associatedPartsList) { //go through list of parts on table and add to AssociatedParts list
             updatedProduct.addAssociatedPart(part);
         }
-        //Inventory.getAllProducts().set(index-1, updatedProduct);  //this replaces the object at index with new item
         index++;
         goToMainScreen();
     }

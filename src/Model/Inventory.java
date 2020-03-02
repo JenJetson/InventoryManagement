@@ -9,14 +9,16 @@ public class Inventory {
 
     public static ObservableList<Part> partsList = FXCollections.observableArrayList();
     public static ObservableList<Product> productsList = FXCollections.observableArrayList();
-    public static int index = 1;
+    public static int partId = 1;  // autogenerates the part ID
+    public static int productId = 1;  //autogenerates the product ID
 
     public static void addPart(Part part){
         partsList.add(part);
-        index++;
+        partId++;
     }
     public static void addProduct(Product product){
         productsList.add(product);
+        productId++;
     }
     public static Part lookupPart(int partId){
         return lookupPart(partId);
@@ -25,7 +27,10 @@ public class Inventory {
         return lookupProduct(productId);
     }
     public static int getIndex(){
-        return index;
+        return partId;
+    }
+    public static int getProductId(){
+        return productId;
     }
 
     public static ArrayList lookupPart(String partName){
