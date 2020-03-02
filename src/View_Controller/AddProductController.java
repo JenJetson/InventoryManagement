@@ -1,15 +1,23 @@
 package View_Controller;
 
 import Model.Inventory;
+import Model.Part;
 import Model.Product;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Objects;
+import java.util.ResourceBundle;
 
-public class AddProductController {
+public class AddProductController implements Initializable {
     @FXML
     Button btnCancel;
     @FXML
@@ -29,7 +37,7 @@ public class AddProductController {
     @FXML
     TextField searchField;
     @FXML
-    TableView tableAssociatedProducts;
+    TableView tableAssociatedParts;
     @FXML
     Button btnAdd;
     @FXML
@@ -46,25 +54,74 @@ public class AddProductController {
     TableColumn partInvColumn;
     @FXML
     TableColumn partPriceColumn;
+    @FXML
+    TableColumn associatedIdColumn;
+    @FXML
+    TableColumn associatedNameColumn;
+    @FXML
+    TableColumn associatedInvColumn;
+    @FXML
+    TableColumn associatedPriceColumn;
 
+    ObservableList<Part> associatedPartsList;
 
+    Part selectedPart;
     Product newProduct;
-    int index = Inventory.partsList.size() + 1;
-
+    int index = Inventory.productsList.size() + 1;
 
     public AddProductController() {
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        getPartsTable();
+        partIdColumn.setCellValueFactory(new PropertyValueFactory<>("id")); //'id' is the actual variable name from part class
+        partNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        partInvColumn.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        partPriceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+        //new item so no associated parts to fill into screen
+        tableAssociatedParts.setItems(associatedPartsList);
+    }
+
+
     @FXML
-    public void clickBtnAdd(ActionEvent actionEvent) {
+    public void clickBtnAdd() {
+        //selectedPart = tableParts.getSelectionModel().getSelectedItem();
+        newProduct.addAssociatedPart(selectedPart);
+    }
 
+    public void getAssociatedPartsTable() {
+        tableAssociatedParts.setItems(newProduct.getAllAssociatedParts());
+    }
 
+    @FXML //for when you push enter when nothing there so it refreshes
+    public void enterBtnSearch(ActionEvent event) {
+        if (Objects.equals(searchField.getText(), "")) { //checks for an empty field
+            getPartsTable();  //calls method to refill parts table
+        } else
+            clickBtnSearch(event);  //call the search method
+        searchField.clear();  //clean the text field
+    }
+
+    public void getPartsTable() {  //get all parts
+        tableParts.setItems(Inventory.getAllParts());  //gets all parts
     }
 
     @FXML
     public void clickBtnSearch(ActionEvent actionEvent) {
-        //todo
+        String search = searchField.getText();  //capture the text in the search field
+        ObservableList<Part> partMatches = FXCollections.observableArrayList();
+        for (Part part : Inventory.getAllParts()) {  //call the getAllParts method
+            if (Objects.equals(Integer.toString(part.getId()), search.trim()) ||
+                    Objects.equals(part.getName().toLowerCase(), search.toLowerCase().trim())) {
+                partMatches.add(part);
+            }
+        }
+        tableParts.setItems(partMatches); //update window (tableParts) with matches
+        searchField.clear();  //clean the text field
     }
+
 
     @FXML
     public void clickBtnSave(ActionEvent actionEvent) throws IOException {
@@ -73,11 +130,10 @@ public class AddProductController {
         Double price = Double.valueOf(addPrice.getText());
         int min = Integer.valueOf(addMin.getText());
         int max = Integer.valueOf(addMax.getText());
-
-        newProduct = new Product(index,name,price,inv,min,max );
+        newProduct = new Product(index, name, price, inv, min, max);
         Inventory.addProduct(newProduct);
+        index++;
         goToMainScreen();
-
     }
 
     @FXML

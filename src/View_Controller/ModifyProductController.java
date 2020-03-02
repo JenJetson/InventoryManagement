@@ -126,7 +126,7 @@ public class ModifyProductController {
 
 
     @FXML
-    public void clickBtnAdd() throws IOException {
+    public void clickBtnAdd() {
         Part selectedPart = searchPartsTable.getSelectionModel().getSelectedItem();
         selectedProduct.addAssociatedPart(selectedPart);
     }
